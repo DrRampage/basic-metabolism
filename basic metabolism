@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+// Calculate the users Basal Metabolism based on gender. Use Harris-Benedict formula for determining BMR.
+// BMR calculation for men (metric)
+double calculateBMR_Men(double weight, double height, int age) {
+    return 66.5 + (13.75 * weight) + (5.003 * height) - (6.755 * age);
+}
+
+// BMR calculation for women (metric)
+double calculateBMR_Women(double weight, double height, int age) {
+    return 655.1 + (9.563 * weight) + (1.850 * height) - (4.676 * age);
+}
+
+int main() {
+    double weight, height;
+    int age;
+    char gender;
+
+    cout << "Enter your weight in kg: ";
+    cin >> weight;
+    cout << "Enter your height in cm: ";
+    cin >> height;
+    cout << "Enter your age: ";
+    cin >> age;
+    cout << "Enter your gender (M/F): ";
+    cin >> gender;
+
+    if (gender == 'M' || gender == 'm') {
+        double bmr = calculateBMR_Men(weight, height, age);
+        cout << "Your calculated BMR is: " << bmr << " calories/day." << endl;
+    } else if (gender == 'F' || gender == 'f') {
+        double bmr = calculateBMR_Women(weight, height, age);
+        cout << "Your calculated BMR is: " << bmr << " calories/day." << endl;
+    } else {
+        cout << "Invalid gender input. Please use 'M' or 'F'." << endl;
+    }
+
+    return 0;
+}
